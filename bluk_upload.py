@@ -41,7 +41,7 @@ with webdriver.Chrome(cpath) as driver:
 
     bluk_download_button.click()
 
-    # simulating fownload
+    # simulating download
 
     select_file_button = WebDriverWait(
         driver, 20).until(
