@@ -31,7 +31,7 @@ with webdriver.Firefox(executable_path=cpath) as driver:
 
     upload_div_class = "input[type='file']"
     # TODO : what if there are many
-    
+
     file_upload_input = driver.find_element_by_css_selector(upload_div_class)
     lesson_name_input = WebDriverWait(
         driver, 20).until(
@@ -48,7 +48,9 @@ with webdriver.Firefox(executable_path=cpath) as driver:
         By.CLASS_NAME, "fileuploadlist").find_elements_by_tag_name("li")[0]
     file_upload_input.send_keys(absolute_file_path)
     # TODO : to be updated to take automatically
-    driver.execute_script("arguments[0].innerText = 'demo-loggin.mov'", upload_div_file_name)
+    driver.execute_script(
+        "arguments[0].innerText = 'demo-loggin.mov'",
+        upload_div_file_name)
     save_button = WebDriverWait(
         driver, 20).until(
         EC.element_to_be_clickable(

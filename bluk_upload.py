@@ -27,7 +27,7 @@ with webdriver.Chrome(cpath) as driver:
     view_as_admin_locator = 'menu-item-Generic_View_Admin'
     code_validate_button = driver.find_element(By.ID, view_as_admin_locator)
     code_validate_button.click()
-    # trying to click the upload bluk 
+    # trying to click the upload bluk
     view_more_button = WebDriverWait(
         driver, 20).until(
         EC.element_to_be_clickable(
@@ -38,27 +38,31 @@ with webdriver.Chrome(cpath) as driver:
         driver, 20).until(
         EC.element_to_be_clickable(
             (By.NAME, "Bulk upload courses")))
-    
+
     bluk_download_button.click()
-    
+
     # simulating fownload
 
     select_file_button = WebDriverWait(
         driver, 20).until(
         EC.element_to_be_clickable(
             (By.CSS_SELECTOR, "button[aria-label='Browse']")))
-    
-    driver.execute_script("HTMLInputElement.prototype.click = function() {if(this.type !== 'file') HTMLElement.prototype.click.call(this);};")
+
+    driver.execute_script(
+        "HTMLInputElement.prototype.click = function() {if(this.type !== 'file') HTMLElement.prototype.click.call(this);};")
     select_file_button.click()
 
-    absolute_file_path = os.path.abspath('./sample-courses.zip')
+    absolute_file_path = os.path.abspath('1584537484.023008.zip')
 
-    select_file_input = driver.find_element(By.CSS_SELECTOR, "input[type=file]")
+    select_file_input = driver.find_element(
+        By.CSS_SELECTOR, "input[type=file]")
     select_file_input.send_keys(absolute_file_path)
-    upload_file_button = WebDriverWait(
-        driver, 20).until(
-        EC.element_to_be_clickable(
-            (By.CLASS_NAME, "button[css=*'ms-button-yellow']")))
-
-    ActionChains(driver).move_to_element(upload_file_button).click().perform()
-    
+    WebDriverWait(
+        driver,
+        24 *
+        60 *
+        60).until(
+        EC.invisibility_of_element_located(
+            (By.CLASS_NAME,
+             "bg-Overlap")))
+    time.sleep(120)
