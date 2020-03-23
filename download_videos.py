@@ -20,14 +20,13 @@ def download_videos_from_playlist(playlist_link, output_path='./videos'):
         video = YouTube(url)
         video.streams.filter(progressive=True, file_extension='mp4').order_by(
             'resolution')[-1].download(final_path)
-    
     return final_path
 
 
 def move_files_to_folder(path):
     """
-    this loops trought a directories find all files
-    for each file create a folder with the same name 
+    this loops trough a directories find all files
+    for each file create a folder with the same name
     and then move the file to the given folder
     
     Args:
